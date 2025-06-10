@@ -15,3 +15,28 @@ const showMenu = (toggleId, navId) =>{
 showMenu('nav-toggle','nav-menu')
 
 // ===================slideshow======================= //
+const slides = document.querySelector('.pqowen_slidesarea_2025abc');
+const images = document.querySelectorAll('.pqowen_slidesarea_2025abc img');
+const prevBtn = document.querySelector('.pqowen_btns_2025abc.prev');
+const nextBtn = document.querySelector('.pqowen_btns_2025abc.next');
+
+let currentIndex = 0;
+
+function showSlide(index) {
+  if(index < 0) {
+    currentIndex = images.length - 1;
+  } else if(index >= images.length) {
+    currentIndex = 0;
+  } else {
+    currentIndex = index;
+  }
+  slides.style.transform = `translateX(${-currentIndex * 300}px)`;
+}
+
+prevBtn.addEventListener('click', () => {
+  showSlide(currentIndex - 1);
+});
+
+nextBtn.addEventListener('click', () => {
+  showSlide(currentIndex + 1);
+});

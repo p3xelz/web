@@ -383,5 +383,44 @@ div.nav__link:hover {
     display: flex;
 }
 /* ====================== */
+.pqowen_sliderbox_2025abc {
+  width: 300px;
+  position: relative;
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 10px;
+}
 
+.pqowen_slidesarea_2025abc {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.pqowen_slidesarea_2025abc img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.pqowen_btns_2025abc {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.7);
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 50%;
+  user-select: none;
+}
+
+.pqowen_btns_2025abc.prev {
+  left: 10px;
+}
+
+.pqowen_btns_2025abc.next {
+  right: 10px;
+}
 /* ============================= */
