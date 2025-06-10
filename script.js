@@ -15,28 +15,33 @@ const showMenu = (toggleId, navId) =>{
 showMenu('nav-toggle','nav-menu')
 
 // ===================slideshow======================= //
-const slides = document.querySelector('.pqowen_slidesarea_2025abc');
-const images = document.querySelectorAll('.pqowen_slidesarea_2025abc img');
-const prevBtn = document.querySelector('.pqowen_btns_2025abc.prev');
-const nextBtn = document.querySelector('.pqowen_btns_2025abc.next');
+const slider = document.querySelector('.zxqvlk_container_2025xyz');
 
-let currentIndex = 0;
+let isDown = false;
+let startX;
+let scrollLeft;
 
-function showSlide(index) {
-  if(index < 0) {
-    currentIndex = images.length - 1;
-  } else if(index >= images.length) {
-    currentIndex = 0;
-  } else {
-    currentIndex = index;
-  }
-  slides.style.transform = `translateX(${-currentIndex * 300}px)`;
-}
-
-prevBtn.addEventListener('click', () => {
-  showSlide(currentIndex - 1);
+slider.addEventListener('mousedown', (e) => {
+  isDown = true;
+  slider.classList.add('active');
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
 });
 
-nextBtn.addEventListener('click', () => {
-  showSlide(currentIndex + 1);
+slider.addEventListener('mouseleave', () => {
+  isDown = false;
+  slider.classList.remove('active');
+});
+
+slider.addEventListener('mouseup', () => {
+  isDown = false;
+  slider.classList.remove('active');
+});
+
+slider.addEventListener('mousemove', (e) => {
+  if(!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - slider.offsetLeft;
+  const walk = (x - startX) * 2; // *2 คือความเร็วเลื่อน
+  slider.scrollLeft = scrollLeft - walk;
 });
