@@ -15,27 +15,59 @@ const showMenu = (toggleId, navId) =>{
 showMenu('nav-toggle','nav-menu')
 
 // ===================slideshow======================= //
-const carousel = document.querySelector(".carousel");
+document.addEventListener('DOMContentLoaded', () => {
+    const sliderWrapper = document.querySelector('.slider-wrapper');
+    const sliderItems = document.querySelectorAll('.slider-item');
+    const prevButton = document.querySelector('.slider-control.prev');
+    const nextButton = document.querySelector('.slider-control.next');
 
-let isDragStart = false, prevPageX, prevScrollLeft;
+    let currentIndex = 0;
+    const totalSlides = sliderItems.length;
 
-const dragStart = (e) => {
-    isDragStart = true;
-    prevPageX = e.pageX;
-    prevScrollLeft = carousel.scrollLeft;
-}
+    // Function to move the slider to a specific slide
+    const goToSlide = (index) => {
+        if (index < 0) {
+            currentIndex = totalSlides - 1; // Wrap around to the last slide
+        } else if (index >= totalSlides) {
+            currentIndex = 0; // Wrap around to the first slide
+        } else {
+            currentIndex = index;
+        }
+        const offset = -currentIndex * 100; // Calculate the percentage to translate
+        sliderWrapper.style.transform = `translateX(${offset}%)`;
+    };
 
-const dragging = (e) => {
-  if(!isDragStart) return;
-  e.preventDefault();
-  let positionDiff = e.pageX - prevPageX;
-  carousel.scrollLeft = prevScrollLeft - positionDiff;
-}
+    // Function to show the next slide
+    const showNextSlide = () => {
+        goToSlide(currentIndex + 1);
+    };
 
-const dragStop = () => {
-    isDragStart = false;
-}
+    // Function to show the previous slide
+    const showPrevSlide = () => {
+        goToSlide(currentIndex - 1);
+    };
 
-carousel.addEventListener("mousedown", dragStart);
-carousel.addEventListener("mousemove", dragging);
-carousel.addEventListener("mouseup", dragStop);
+    // Add event listeners to the buttons
+    nextButton.addEventListener('click', showNextSlide);
+    prevButton.addEventListener('click', showPrevSlide);
+
+    // Initial load: ensure the first slide is visible
+    goToSlide(0);
+
+    // Optional: Auto-slide (uncomment to enable)
+    // let slideInterval = setInterval(showNextSlide, 3000); // Change slide every 3 seconds
+
+    // // Pause auto-slide on hover
+    // sliderWrapper.addEventListener('mouseenter', () => {
+    //     clearInterval(slideInterval);
+    // });
+    // sliderWrapper.addEventListener('mouseleave', () => {
+    //     slideInterval = setInterval(showNextSlide, 3000);
+    // });
+
+    // Optional: Recalculate slide position on window resize for better responsiveness
+    // Though flexbox handles much of it, this ensures correct positioning if layout shifts
+    window.addEventListener('resize', () => {
+        goToSlide(currentIndex);
+    });
+});

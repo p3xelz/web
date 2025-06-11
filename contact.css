@@ -387,7 +387,6 @@ section{
     width: 100%;
     min-height: 100vh;
     height: 100%;
-    background: aqua;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -475,33 +474,25 @@ section{
     margin-top: 5px;
     display: inline-block;
 }
-.right-side .button_send input[type="button"]{
+.right-side .button_send button{
     color: #fff;
     font-size: 18px;
     outline: none;
     border: none;
     padding: 4px 8px;
-    border-radius: 6px;
+    border-radius: 10px;
     background: #000;
     border: #000 solid 2px;
     transition: .4s ease;
 }
-.button_send input[type="button"]:hover{
+.button_send button:hover{
     background: #fff;
     color: #000;
     border-radius: 9px;
     border: #000 solid 2px;
     transition: .4s ease;
 }
-.error{
-    color: red;
-}
-.error-border{
-    border-bottom: 1px solid red;
-}
-#btn_send{
-    color: green;
-}
+
 @media (max-width:950px){
     .containor_contact{
         width: 90%;

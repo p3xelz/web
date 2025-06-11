@@ -172,18 +172,19 @@
                         <div class="topic-text">CONTACT US  </div>
                             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed, quos!</p>
                         
-                            <form onsubmit="event.preventDefault(); validateForm()">
+                            <form action="https://api.web3forms.com/submit" method="POST">
+                                    <input type="hidden" name="access_key" value="63583317-e890-4cd5-b666-70023573d528">
                                 <div class="input-box">
-                                <input type="text" id="name" placeholder="enter your name">
+                                <input type="text" id="name" name="name" required placeholder="enter your name">
                                 </div>
                                 <div class="input-box">
-                                    <input type="text" id="email" placeholder="enter your email">
+                                    <input type="text" id="email" name="email" required placeholder="enter your email">
                                 </div>
                                 <div class="input-box Messages-box">
-                                    <textarea id="Messages"></textarea>
+                                    <textarea id="Messages" name="message" required ></textarea>
                                 </div>
                                 <div class="button_send">
-                                    <input type="button" value="send">
+                                    <button type="submit">Submit </button>
                                 </div>
                               </form>
                         </div>
