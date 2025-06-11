@@ -15,33 +15,27 @@ const showMenu = (toggleId, navId) =>{
 showMenu('nav-toggle','nav-menu')
 
 // ===================slideshow======================= //
-const slider = document.querySelector('.zxqvlk_container_2025xyz');
+const carousel = document.querySelector(".carousel");
 
-let isDown = false;
-let startX;
-let scrollLeft;
+let isDragStart = false, prevPageX, prevScrollLeft;
 
-slider.addEventListener('mousedown', (e) => {
-  isDown = true;
-  slider.classList.add('active');
-  startX = e.pageX - slider.offsetLeft;
-  scrollLeft = slider.scrollLeft;
-});
+const dragStart = (e) => {
+    isDragStart = true;
+    prevPageX = e.pageX;
+    prevScrollLeft = carousel.scrollLeft;
+}
 
-slider.addEventListener('mouseleave', () => {
-  isDown = false;
-  slider.classList.remove('active');
-});
-
-slider.addEventListener('mouseup', () => {
-  isDown = false;
-  slider.classList.remove('active');
-});
-
-slider.addEventListener('mousemove', (e) => {
-  if(!isDown) return;
+const dragging = (e) => {
+  if(!isDragStart) return;
   e.preventDefault();
-  const x = e.pageX - slider.offsetLeft;
-  const walk = (x - startX) * 2; // *2 คือความเร็วเลื่อน
-  slider.scrollLeft = scrollLeft - walk;
-});
+  let positionDiff = e.pageX - prevPageX;
+  carousel.scrollLeft = prevScrollLeft - positionDiff;
+}
+
+const dragStop = () => {
+    isDragStart = false;
+}
+
+carousel.addEventListener("mousedown", dragStart);
+carousel.addEventListener("mousemove", dragging);
+carousel.addEventListener("mouseup", dragStop);
