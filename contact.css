@@ -5,10 +5,10 @@
 
   /*========== Colors ==========*/
   /*Color mode HSL(hue, saturation, lightness)*/
-  --black-color: hsl(220, 24%, 12%);
-  --black-color-light: hsl(220, 24%, 15%);
-  --black-color-lighten: hsl(220, 20%, 18%);
-  --white-color: #fff;
+  --black-color: transparent ; 
+  --black-color-light: #fff;
+  --black-color-lighten: #fff;
+  --white-color: #555;
   --body-color: hsl(220, 100%, 97%);
 
   /*========== Font and typography ==========*/
@@ -38,6 +38,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family:  "Kanit", sans-serif;;
+    scroll-behavior: smooth;
 }
 ul {
   list-style: none;
@@ -51,7 +52,7 @@ a {
 
 /*=============== REUSABLE CSS CLASSES ===============*/
 .container {
-  padding: 0 100px;
+  padding: 0 50px;
   margin-inline: 1.5rem;
 }
 
@@ -62,6 +63,7 @@ a {
   left: 0;
   width: 100%;
   background-color: var(--black-color);
+  backdrop-filter:blur(2px);
   box-shadow: 0 2px 16px hsla(220, 32%, 8%, .3);
   z-index: var(--z-fixed);
 }
@@ -104,6 +106,12 @@ a {
   font-weight: initial;
   font-size: 1.25rem;
 }
+
+.nav__logo p {
+  font-weight: 600;
+  font-size: 1.75rem;
+}
+
 .nav__toggle {
   position: relative;
   width: 32px;
@@ -162,7 +170,6 @@ a {
 
 a.nav__link:hover {
   font-size: 105%;
-  /* background-color: var(--black-color-light); */
   transition: .4s ease;
 }
 
@@ -205,19 +212,19 @@ div.nav__link:hover {
 
 .dropdown__link, 
 .dropdown__sublink {
-  padding: 1.25rem 1.25rem 1.25rem 2.5rem;
+  padding: 1.25rem 1.25rem 1.25rem .5rem;
   color: var(--white-color);
   background-color: var(--black-color-light);
   display: flex;
   align-items: center;
-  column-gap: .5rem;
+  column-gap: 1.5rem;
   font-weight: var(--font-semi-bold);
   transition: background-color .3s;
 }
 
 .dropdown__link i, 
 .dropdown__sublink i {
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   font-weight: initial;
 }
 
