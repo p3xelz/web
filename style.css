@@ -38,6 +38,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family:  "Kanit", sans-serif;;
+    scroll-behavior: smooth;
 }
 ul {
   list-style: none;
@@ -169,7 +170,6 @@ a {
 
 a.nav__link:hover {
   font-size: 105%;
-  /* background-color: var(--black-color-light); */
   transition: .4s ease;
 }
 
