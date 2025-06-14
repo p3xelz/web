@@ -413,16 +413,17 @@ section{
     justify-content: space-between;
 }
 .containor_contact .contant .left-side {
-    width: 25%;
+    width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column;
+    /* แก้กับเป็น column */
+    flex-direction: row;
     justify-content: space-between;
     margin-top: 10px;
     align-items: center;
     position: relative;
 }
-.contant .left-side::before{
+/* .contant .left-side::before{
     content: "";
     position: absolute;
     height: 70%;
@@ -431,7 +432,7 @@ section{
     top: 50%;
     transform: translateY(-50%);
     background: #000;
-}
+} */
 .address_text1 , .address_text2 , .address_text3 , .tel1 , .tel2 , .tel3 ,.email1 {
     font-size: 14px;
     color: #afafb6;
@@ -451,21 +452,21 @@ section{
     font-weight: 500;
     color: #000;
 }
-.containor_contact .contant .right-side{
+/* .containor_contact .contant .right-side{
     width: 70%;
     height: 100%;
     margin-left: 0px;
-}
+} */
 .contant .left-side .details {
     margin: 12px;
     text-align: center;
 }
-.right-side .input-box {
+/* .right-side .input-box {
     height: 50px;
     width: 100%;
     margin: 5px 0;
-}
-.right-side .input-box input , .right-side .input-box textarea{
+} */
+/* .right-side .input-box input , .right-side .input-box textarea{
     padding: 5px 10px;
     height: 100%;
     width: 100%;
@@ -499,7 +500,7 @@ section{
     border-radius: 9px;
     border: #000 solid 2px;
     transition: .4s ease;
-}
+} */
 
 @media (max-width:950px){
     .containor_contact{
@@ -519,7 +520,7 @@ section{
     }
     .containor_contact .contant .left-side{
         width: 100%;
-        flex-direction: row;
+        /* flex-direction: row; */
         margin-top: 30px;
         justify-content: center;
         flex-wrap: wrap;
